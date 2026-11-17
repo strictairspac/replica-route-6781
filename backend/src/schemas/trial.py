@@ -4,3 +4,4 @@ class TrialInput(BaseModel):
     request_set_id:int=Field(gt=0)
     max_delay_ms:int=Field(default=100,ge=0,le=3600000)
     sticky_ms:int=Field(default=500,ge=0,le=3600000)
+    topology_version_id:int|None=Field(default=None,gt=0)

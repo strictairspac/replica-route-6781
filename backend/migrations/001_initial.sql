@@ -1,3 +1,7 @@
 -- Initial schema is applied idempotently by SQLAlchemy metadata.create_all.
--- Authoritative entities: users, nodes, request_sets, trials, audit_logs.
+-- Authoritative entities: users, nodes, request_sets, trials, audit_logs,
+-- topology_versions, topology_head, topology_changes.
 -- Routing request events and frozen input/result evidence are MySQL JSON.
+-- The live topology is one immutable topology_versions row referenced by the
+-- single topology_head row; node rows are only a projection of that version.
+-- Existing nodes are bootstrapped into v1 on startup (no online migration engine).
